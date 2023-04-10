@@ -1,0 +1,17 @@
+# ninja log v5
+1	58	7028215821678654	src/module/event_bus/event_bus_autogen/timestamp	1fe562145ca07b40
+1	58	7028215821678654	src/module/event_bus/event_bus_autogen/mocs_compilation.cpp	1fe562145ca07b40
+1	58	7028215821678654	C:/Users/Administrator/Documents/qt_mvc_test/build-qt_mvc_test-Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/src/module/event_bus/event_bus_autogen/timestamp	1fe562145ca07b40
+1	58	7028215821678654	C:/Users/Administrator/Documents/qt_mvc_test/build-qt_mvc_test-Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/src/module/event_bus/event_bus_autogen/mocs_compilation.cpp	1fe562145ca07b40
+59	464	7028215825834767	src/module/event_bus/CMakeFiles/event_bus.dir/event_bus_autogen/mocs_compilation.cpp.obj	2178e2733d11079e
+61	590	7028215827120462	src/module/event_bus/CMakeFiles/event_bus.dir/event_bus.cpp.obj	4449423a69863338
+590	617	7028215827399534	src/module/event_bus/event_bus.lib	9c768442e5fa07ed
+617	755	7028215828495866	qt_mvc_test_autogen/timestamp	3835deee85f16f0e
+617	755	7028215828495866	qt_mvc_test_autogen/mocs_compilation.cpp	3835deee85f16f0e
+617	755	7028215828495866	C:/Users/Administrator/Documents/qt_mvc_test/build-qt_mvc_test-Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/qt_mvc_test_autogen/timestamp	3835deee85f16f0e
+617	755	7028215828495866	C:/Users/Administrator/Documents/qt_mvc_test/build-qt_mvc_test-Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/qt_mvc_test_autogen/mocs_compilation.cpp	3835deee85f16f0e
+760	999	7028215831206807	CMakeFiles/qt_mvc_test.dir/src/dao/student_dao.cpp.obj	935a9543a032e3c4
+755	1208	7028215833299803	CMakeFiles/qt_mvc_test.dir/qt_mvc_test_autogen/mocs_compilation.cpp.obj	354d78125f394b39
+757	1257	7028215833798136	CMakeFiles/qt_mvc_test.dir/src/main.cpp.obj	a6879fee989f2588
+762	1331	7028215834515737	CMakeFiles/qt_mvc_test.dir/src/view/main_window.cpp.obj	b5f60ea480c2fc1c
+1331	1866	7028215836419374	qt_mvc_test.exe	e62c913b4676b6cb

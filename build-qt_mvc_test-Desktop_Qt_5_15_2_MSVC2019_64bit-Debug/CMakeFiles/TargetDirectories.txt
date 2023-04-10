@@ -1,0 +1,12 @@
+C:/Users/Administrator/Documents/qt_mvc_test/build-qt_mvc_test-Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/CMakeFiles/qt_mvc_test.dir
+C:/Users/Administrator/Documents/qt_mvc_test/build-qt_mvc_test-Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/CMakeFiles/edit_cache.dir
+C:/Users/Administrator/Documents/qt_mvc_test/build-qt_mvc_test-Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/CMakeFiles/rebuild_cache.dir
+C:/Users/Administrator/Documents/qt_mvc_test/build-qt_mvc_test-Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/CMakeFiles/qt_mvc_test_autogen_timestamp_deps.dir
+C:/Users/Administrator/Documents/qt_mvc_test/build-qt_mvc_test-Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/CMakeFiles/qt_mvc_test_autogen.dir
+C:/Users/Administrator/Documents/qt_mvc_test/build-qt_mvc_test-Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/src/module/CMakeFiles/edit_cache.dir
+C:/Users/Administrator/Documents/qt_mvc_test/build-qt_mvc_test-Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/src/module/CMakeFiles/rebuild_cache.dir
+C:/Users/Administrator/Documents/qt_mvc_test/build-qt_mvc_test-Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/src/module/event_bus/CMakeFiles/event_bus.dir
+C:/Users/Administrator/Documents/qt_mvc_test/build-qt_mvc_test-Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/src/module/event_bus/CMakeFiles/edit_cache.dir
+C:/Users/Administrator/Documents/qt_mvc_test/build-qt_mvc_test-Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/src/module/event_bus/CMakeFiles/rebuild_cache.dir
+C:/Users/Administrator/Documents/qt_mvc_test/build-qt_mvc_test-Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/src/module/event_bus/CMakeFiles/event_bus_autogen_timestamp_deps.dir
+C:/Users/Administrator/Documents/qt_mvc_test/build-qt_mvc_test-Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/src/module/event_bus/CMakeFiles/event_bus_autogen.dir

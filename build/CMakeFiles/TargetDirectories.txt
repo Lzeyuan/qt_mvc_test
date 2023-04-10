@@ -1,0 +1,3 @@
+C:/Users/Administrator/Documents/qt_mvc_test/build/CMakeFiles/qt_mvc_test.dir
+C:/Users/Administrator/Documents/qt_mvc_test/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Administrator/Documents/qt_mvc_test/build/CMakeFiles/ZERO_CHECK.dir
