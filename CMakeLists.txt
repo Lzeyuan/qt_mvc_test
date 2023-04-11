@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 
 set(VCPKG_ROOT "C:/src/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE PATH "")
 set(CMAKE_TOOLCHAIN_FILE ${VCPKG_ROOT})
-set(QT_INSTALL_PATH "E:\\Enviorment\\sdk\\Qt\\5.15.2\\msvc2019_64")
+set(QT_INSTALL_PATH "C:\\Qt\\5.15.2\\msvc2019_64")
 set(CMAKE_PREFIX_PATH ${QT_INSTALL_PATH})
 
 project(qt_mvc_test VERSION 0.1 LANGUAGES CXX)
@@ -27,7 +27,7 @@ add_executable(qt_mvc_test
     ${PROJECT_SOURCES}
 )
 
-add_subdirectory(src/module)
+add_subdirectory(3rd)
 
 target_link_libraries(qt_mvc_test PRIVATE Qt${QT_VERSION_MAJOR}::Widgets event_bus)
 
