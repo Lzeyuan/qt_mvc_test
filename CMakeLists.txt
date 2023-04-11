@@ -2,8 +2,9 @@ cmake_minimum_required(VERSION 3.5)
 
 set(VCPKG_ROOT "C:/src/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE PATH "")
 set(CMAKE_TOOLCHAIN_FILE ${VCPKG_ROOT})
-set(QT_INSTALL_PATH "C:\\Qt\\5.15.2\\msvc2019_64")
-set(CMAKE_PREFIX_PATH ${QT_INSTALL_PATH})
+set(QT_INSTALL_PATH ${CMAKE_PREFIX_PATH})
+
+message("CMAKE_PREFIX_PATH = " ${CMAKE_PREFIX_PATH})
 
 project(qt_mvc_test VERSION 0.1 LANGUAGES CXX)
 
@@ -14,8 +15,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Concurrent)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Concurrent)
 
 set(PROJECT_SOURCES
     "src/main.cpp"
@@ -29,7 +30,7 @@ add_executable(qt_mvc_test
 
 add_subdirectory(3rd)
 
-target_link_libraries(qt_mvc_test PRIVATE Qt${QT_VERSION_MAJOR}::Widgets event_bus)
+target_link_libraries(qt_mvc_test PRIVATE Qt5::Widgets Qt5::Concurrent event_bus)
 
 target_include_directories(qt_mvc_test
     PRIVATE

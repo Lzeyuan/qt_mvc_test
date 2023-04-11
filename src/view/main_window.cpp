@@ -3,6 +3,9 @@
 #include <event_bus.h>
 
 #include <QDebug>
+#include <QThread>
+#include <QTimer>
+#include <QtConcurrent>
 #include <memory>
 
 #include "src/dao/student_dao.h"
@@ -25,22 +28,22 @@ void MainWindow::InitController() {
   QString numberStr = QString::number(dao2.GetId());
   button_test_->setText("hello!" + numberStr);
 
-
-   EventBus::Get().Subscribe<std::shared_ptr<HelloEvent>>(
-      typeid(HelloEvent).hash_code(),
+  EventBus::Get().Subscribe<std::shared_ptr<HelloEvent>>(
+      typeid(HelloEvent).hash_code(), this,
       [=](std::shared_ptr<HelloEvent> hello_event_ptr) {
         qDebug() << "HelloEvent id: " << QString::number(hello_event_ptr->id);
-     });
+        qDebug() << QThread::currentThread();
+        button_test_->setText("hello!" + QString::number(hello_event_ptr->id));
+      });
 
-  auto hello_event_ptr = std::make_shared<HelloEvent>();
-  hello_event_ptr->id = 22;
-  hello_event_ptr->sex = false;
-  qDebug() << "Publish HelloEvent";
-  EventBus::Get().Publish(typeid(HelloEvent).hash_code(), hello_event_ptr);
-
-  hello_event_ptr = std::make_shared<HelloEvent>();
-  hello_event_ptr->id = 10086;
-  hello_event_ptr->sex = true;
-  qDebug() << "Publish HelloEvent 2";
-  EventBus::Get().Publish(typeid(HelloEvent).hash_code(), hello_event_ptr);
+  QTimer::singleShot(1000, this, []() {
+    QtConcurrent::run([]() {
+      auto hello_event_ptr = std::make_shared<HelloEvent>();
+      hello_event_ptr->id = 22;
+      hello_event_ptr->sex = false;
+      qDebug() << "Publish HelloEvent";
+      qDebug() << QThread::currentThread();
+      EventBus::Get().Publish(typeid(HelloEvent).hash_code(), hello_event_ptr);
+    });
+  });
 }

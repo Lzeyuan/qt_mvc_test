@@ -1,17 +1,13 @@
 ﻿
 #include "event_bus.h"
 
-EventBus::EventBus()= default;
+//Observer::Observer(std::weak_ptr<QObject> object,
+//                   std::function<void(std::any)> &&func)
+//    : object_(object), func_(func) {
+//
+//}
 
-EventBus::~EventBus()= default;
-
-EventBus* EventBus::instance = nullptr;
-EventBus& EventBus::Get()
-{
-    if (!instance)
-    {
-        instance = new EventBus();
-    }
-
-    return *instance;
+EventBus& EventBus::Get() {
+  static EventBus instance;
+  return instance;
 }
