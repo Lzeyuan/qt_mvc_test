@@ -1,1 +1,2 @@
 add_subdirectory(event_bus)
+add_subdirectory(type_event_system)

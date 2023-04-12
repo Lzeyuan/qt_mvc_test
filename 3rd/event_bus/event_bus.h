@@ -1,65 +1,53 @@
 ﻿#pragma once
-#include <QObject>
 #include <algorithm>
 #include <any>
 #include <functional>
+#include <map>
 #include <mutex>
 #include <string>
 #include <unordered_map>
 
-class IEvent {};
-
-class Observer {
- public:
-  explicit Observer() = default;
-  // Observer(std::weak_ptr<QObject> object, std::function<void(std::any)>&&
-  // func);
-  ~Observer() = default;
-
-  QObject* object_;
-  std::function<void(std::any)> func_;
-};
+#include "SignalSlot.h"
 
 class EventBus {
  public:
-  using UnorderedMultimap = std::unordered_multimap<int, Observer>;
+  using SignalVoid = muduo::Signal<void(std::any)>;
+  using SignalMap = std::map<std::string, SignalVoid>;
+  using Slot = muduo::Slot;
 
+  // 持有就是监听，释放就是注销
   template <typename TMessage, typename EventHandler>
-  void Subscribe(const int& token, QObject* object, EventHandler& handler) {
-    std::unique_lock<std::mutex> locker(sub_mtx_);
-    Observer observer;
-    observer.object_ = object;
-    observer.func_ = [func =
-                          std::forward<EventHandler>(handler)](auto message) {
-      func(std::any_cast<TMessage>(message));
-    };
-
-    subscribers_.emplace(token, observer);
+  Slot Subscribe(const std::string& token, EventHandler& handler) {
+    auto signal_void_it = map_.find(token);
+    if (map_.end() != signal_void_it) {
+      Slot slot =
+          (*signal_void_it).second.connect([handler](const auto& message) {
+            handler(std::any_cast<TMessage>(message));
+          });
+      return slot;
+    }
+    auto signal_void = SignalVoid{};
+    map_.emplace(token, signal_void);
+    return signal_void.connect([handler](const auto& message) {
+      handler(std::any_cast<TMessage>(message));
+    });
   }
 
   template <typename TMessage>
-  void Publish(const int& token, const TMessage& message) {
-    std::unique_lock<std::mutex> locker(pub_mtx_);
-    const auto range = subscribers_.equal_range(token);
-    std::for_each(range.first, range.second,
-                  [message](UnorderedMultimap::value_type& vt) {
-                    QMetaObject::invokeMethod(
-                        vt.second.object_,
-                        [message, vt]() {
-                          vt.second.func_(std::any_cast<TMessage>(message));
-                        },
-                        Qt::QueuedConnection);
-                  });
+  void Publish(const std::string& token, TMessage& message) {
+    // std::unique_lock<std::mutex> locker(pub_mtx_);
+    auto signal_void_it = map_.find(token);
+    if (map_.end() != signal_void_it) {
+      (*signal_void_it).second.call(message);
+    }
   }
 
- protected:
-  UnorderedMultimap subscribers_;
-  std::mutex pub_mtx_;
-  std::mutex sub_mtx_;
+ private:
+  SignalMap map_;
 
 #pragma region Singleton
  public:
-  static EventBus& Get();
+  static EventBus& GetInstance();
 
  private:
   EventBus() = default;

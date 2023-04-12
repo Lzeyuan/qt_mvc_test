@@ -30,7 +30,7 @@ add_executable(qt_mvc_test
 
 add_subdirectory(3rd)
 
-target_link_libraries(qt_mvc_test PRIVATE Qt5::Widgets Qt5::Concurrent event_bus)
+target_link_libraries(qt_mvc_test PRIVATE Qt5::Widgets Qt5::Concurrent event_bus type_event_system)
 
 target_include_directories(qt_mvc_test
     PRIVATE

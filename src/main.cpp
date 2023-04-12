@@ -1,5 +1,6 @@
 #include <QApplication>
-
+#include <QThread>
+#include <QDebug>
 #include "src/view/main_window.h"
 #include "src/base/ioc_container.h"
 
