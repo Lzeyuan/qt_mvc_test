@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 
 set(VCPKG_ROOT "C:/src/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE PATH "")
 set(CMAKE_TOOLCHAIN_FILE ${VCPKG_ROOT})
+set(CMAKE_PREFIX_PATH  "C:\\Qt\\5.15.2\\msvc2019_64")
 set(QT_INSTALL_PATH ${CMAKE_PREFIX_PATH})
 
 message("CMAKE_PREFIX_PATH = " ${CMAKE_PREFIX_PATH})
@@ -15,7 +16,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Concurrent)
+find_package(QT NAMES Qt5 REQUIRED COMPONENTS Widgets Concurrent)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Concurrent)
 
 set(PROJECT_SOURCES

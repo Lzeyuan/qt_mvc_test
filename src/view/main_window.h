@@ -4,19 +4,22 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include <QString>
+#include <event_bus.h>
 
-class MainWindow : public QMainWindow
-{
+
+class MainWindow : public QMainWindow {
   Q_OBJECT
-  
-public:
-  MainWindow(QWidget *parent = nullptr);
+
+ public:
+  MainWindow(QWidget* parent = nullptr);
   ~MainWindow();
 
   void InitView();
   void InitController();
 
-  private:
+ private:
   QPushButton* button_test_;
+  muduo::Slot slot_;
+  muduo::Slot slot_2_;
 };
-#endif // MAINWINDOW_H
+#endif  // MAINWINDOW_H

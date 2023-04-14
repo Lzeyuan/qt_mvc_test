@@ -6,7 +6,8 @@
 #include <vector>
 #include <mutex>
 #include <assert.h>
-//#include "noncopyable.h"
+
+#include <QDebug>
 
 namespace muduo {
 
@@ -22,7 +23,6 @@ struct SignalImpl  {
   SignalImpl() : slots_(new SlotList) {}
 
   void copyOnWrite() {
-    //mutex_.assertLocked();
     if (!slots_.use_count() == 1) {
       slots_.reset(new SlotList(*slots_));
     }
@@ -107,12 +107,12 @@ class Signal<RET(ARGS...)> {
 
   void call(ARGS&&... args) {
     SignalImpl& impl(*impl_);
-    std::shared_ptr<typename SignalImpl::SlotList> slots;
+    std::shared_ptr<SignalImpl::SlotList> slots_temp;
     {
       std::lock_guard lock(impl.mutex_);
-      slots = impl.slots_;
+      slots_temp = impl.slots_;
     }
-    typename SignalImpl::SlotList& s(*slots);
+    typename SignalImpl::SlotList& s(*slots_temp);
     for (typename SignalImpl::SlotList::const_iterator it = s.begin();
          it != s.end(); ++it) {
       std::shared_ptr<SlotImpl> slotImpl = it->lock();
