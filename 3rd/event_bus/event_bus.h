@@ -6,7 +6,7 @@
 #include <mutex>
 #include <string>
 
-#include "SignalSlot.h"
+#include "signal_slot.h"
 
 class EventBus : QObject {
   Q_OBJECT
